@@ -8,6 +8,11 @@ const cors = require("cors");
 const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 
+// Swagger
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
 const connectDB = require("./db/connect");
 const authentication = require("./middleware/authentication");
 // error handler
@@ -32,10 +37,13 @@ const authRouter = require("./routes/auth");
 const jobRouter = require("./routes/jobs");
 
 app.get("/", (req, res) => {
-  res.send("<h2>welcome to JOB API</h2>");
+  res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
 });
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/job", authentication, jobRouter);
+app.use("/api/v1/job", authentication,jobRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
