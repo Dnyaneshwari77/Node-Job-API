@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: JOB API v1
   contact: {}
-  version: '1.0'
+  version: "1.0"
 servers:
   - url: https://job-api-version-1.onrender.com/api/v1
     variables: {}
@@ -15,20 +15,20 @@ paths:
       operationId: RegisterUser
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/RegisterUserRequest'
+                - $ref: "#/components/schemas/RegisterUserRequest"
                 - example:
                     name: John Doe
                     email: john.doe@example.com
                     password: securepassword123
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
@@ -40,19 +40,19 @@ paths:
       operationId: LoginUser
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/LoginUserRequest'
+                - $ref: "#/components/schemas/LoginUserRequest"
                 - example:
                     email: john.doe@example.com
                     password: securepassword123
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
@@ -64,8 +64,8 @@ paths:
       operationId: GetAllJobs
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
@@ -77,26 +77,26 @@ paths:
       operationId: CreateaJob
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/CreateaJobRequest'
+                - $ref: "#/components/schemas/CreateaJobRequest"
                 - example:
                     company: Software Solutions
                     position: Backend Developer
                     status: declined
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
         - bearer: []
     parameters: []
-  /job/{id}:  # Updated path to include the job ID as a parameter
+  /job/{id}: # Updated path to include the job ID as a parameter
     get:
       tags:
         - Job
@@ -110,8 +110,8 @@ paths:
           required: true
           description: the job id
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
@@ -129,8 +129,8 @@ paths:
           required: true
           description: the job id
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
@@ -148,19 +148,19 @@ paths:
           required: true
           description: the job id
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-                - $ref: '#/components/schemas/UpdateJobRequest'
+                - $ref: "#/components/schemas/UpdateJobRequest"
             example:
               company: Updated Company
               position: Updated Position
               status: updated
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security:
@@ -241,9 +241,7 @@ components:
       scheme: bearer
 security: []
 tags:
-  - name: Misc
-    description: ''
   - name: Auth
-    description: ''
+    description: ""
   - name: Job
-    description: ''
+    description: ""
