@@ -31,8 +31,11 @@ app.use(xss());
 const authRouter = require("./routes/auth");
 const jobRouter = require("./routes/jobs");
 
+app.get("/", (req, res) => {
+  res.send("<h2>welcome to JOB API</h2>");
+});
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/job", authentication,jobRouter);
+app.use("/api/v1/job", authentication, jobRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
